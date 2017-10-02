@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.iml
+.idea
+solr_home
+target
+*.log
+log

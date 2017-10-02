@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema name="default_en" version="1.5">
+
+  <fields>
+
+
+
+    <field name="id"                        type="string" indexed="true" stored="true" multiValued="false"/>
+    <field name="uri"                       type="string" indexed="true" stored="true" required="true" multiValued="false"/>
+    <field name="title"                     type="string" indexed="true" stored="true" required="false" multiValued="false" termVectors="true"/>
+    <field name="description"               type="string" indexed="true" stored="true" required="false" multiValued="false" termVectors="true"/>
+    <field name="editorialStatus"           type="string" stored="true" required="false" indexed="true" multiValued="false"/>
+    <field name="altLabels"                 type="string" stored="true" required="false" indexed="true" multiValued="false"/>
+    <field name="hiddenLabels"                 type="string" stored="true" required="false" indexed="true" multiValued="false"/>
+    <field name="definition"                type="string" stored="true" required="false" indexed="true" multiValued="false"/>
+    <field name="conceptScheme"             type="string" stored="true" required="true" indexed="true" multiValued="false"/>
+    <field name="automaticTranslation"     type="string" stored="true" required="true" indexed="true" multiValued="false"/>
+
+    <dynamicField name="*" type="ignored" multiValued="true"/>
+    <field name="_version_" type="long" indexed="true" stored="true"/>
+
+    <!-- To search against all the fields  -->
+    <field name="searchField" type="text_en" indexed="true" stored="true" multiValued="true"/>
+    <copyField source="title"                     dest="searchField"/>
+    <copyField source="description"               dest="searchField"/>
+    <copyField source="editorialStatus"           dest="searchField"/>
+    <copyField source="altLabels"                 dest="searchField"/>
+    <copyField source="conceptScheme"             dest="searchField"/>
+    <copyField source="automaticTranslation"      dest="searchField"/>
+
+  </fields>
+
+  <uniqueKey>id</uniqueKey>
+
+  <types>
+
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="date" class="solr.TrieDateField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField"/>
+
+    <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+  </types>
+
+</schema>
+

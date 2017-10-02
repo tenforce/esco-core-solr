@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema name="default_multilingual" version="1.5">
+
+  <fields>
+
+    <!-- Document identifiers. `uri` is the unique key  -->
+    <field name="uri"           type="string" indexed="true" stored="true" required="true" multiValued="false"/>
+    <field name="uuid"          type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+
+    <!-- A document can belong to multiple conceptschemes -->
+    <field name="conceptSchemes" type="string" stored="true" required="true" indexed="true" multiValued="true"/>
+
+    <!-- For skills, this field can be used to filter on the skilltype -->
+    <field name="skillType"     type="string"  indexed="true" stored="true" required="false" multiValued="false"/>
+
+    <!-- Only some concepts are mappable. Filter on this field when proposing mapping suggestions -->
+    <field name="isMappable"    type="boolean" indexed="true" stored="true" required="false" multiValued="false"/>
+
+
+
+    <!-- Input fields -->
+
+    <!-- Description text. For now only ever given in English. Useful for MoreLikeThis search -->
+    <field name="text"          type="string" stored="true" multiValued="false"/>
+    <field name="search_text"   type="text_html_en" stored="true" indexed="true" multiValued="false"/>
+    <copyField source="text" dest="search_text"/>
+
+    <!-- One preferred label in every available language. An English label should be present -->
+    <field name="preferredLabel_en"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_is"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_it"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_lt"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_lv"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_mt"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_nl"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_no"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_pt"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_pl"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_ro"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_sk"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_sl"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_sv"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_hu"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_hr"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_fr"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_fi"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_et"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_es"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_el"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_de"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_da"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_cs"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_bg"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="preferredLabel_ga"  type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+
+    <!-- Lists of all labels: preferred, alternate, and hidden. -->
+    <field name="labels_en"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_is"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_it"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_lt"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_lv"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_mt"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_nl"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_no"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_pt"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_pl"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_ro"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_sk"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_sl"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_sv"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_hu"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_hr"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_fr"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_fi"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_et"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_es"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_el"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_de"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_da"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_cs"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_bg"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="labels_ga"  type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+
+
+
+    <!-- Search fields -->
+
+    <!-- The following fields are used for searching terms, they contains specific rules for each language -->
+    <!-- preferred label, i.e. document title -->
+    <field name="search_title_en"         type="text_html_en" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_is"         type="text_html_is" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_it"         type="text_html_it" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_lt"         type="text_html_lt" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_lv"         type="text_html_lv" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_mt"         type="text_html_mt" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_nl"         type="text_html_nl" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_no"         type="text_html_no" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_pt"         type="text_html_pt" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_pl"         type="text_html_pl" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_ro"         type="text_html_ro" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_sk"         type="text_html_sk" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_sl"         type="text_html_sl" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_sv"         type="text_html_sv" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_hu"         type="text_html_hu" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_hr"         type="text_html_hr" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_fr"         type="text_html_fr" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_fi"         type="text_html_fi" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_et"         type="text_html_et" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_es"         type="text_html_es" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_el"         type="text_html_el" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_de"         type="text_html_de" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_da"         type="text_html_da" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_cs"         type="text_html_cs" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_bg"         type="text_html_bg" stored="true" indexed="true" multiValued="false"/>
+    <field name="search_title_ga"         type="text_html_ga" stored="true" indexed="true" multiValued="false"/>
+
+    <!-- all labels -->
+    <field name="search_labels_en"         type="text_html_en" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_is"         type="text_html_is" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_it"         type="text_html_it" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_lt"         type="text_html_lt" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_lv"         type="text_html_lv" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_mt"         type="text_html_mt" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_nl"         type="text_html_nl" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_no"         type="text_html_no" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_pt"         type="text_html_pt" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_pl"         type="text_html_pl" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_ro"         type="text_html_ro" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_sk"         type="text_html_sk" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_sl"         type="text_html_sl" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_sv"         type="text_html_sv" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_hu"         type="text_html_hu" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_hr"         type="text_html_hr" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_fr"         type="text_html_fr" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_fi"         type="text_html_fi" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_et"         type="text_html_et" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_es"         type="text_html_es" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_el"         type="text_html_el" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_de"         type="text_html_de" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_da"         type="text_html_da" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_cs"         type="text_html_cs" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_bg"         type="text_html_bg" stored="true" indexed="true" multiValued="true"/>
+    <field name="search_labels_ga"         type="text_html_ga" stored="true" indexed="true" multiValued="true"/>
+
+    <!-- all labels,  split up in ngrams -->
+    <field name="ngram_search_labels_en"   type="ngram_html_en" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_is"   type="ngram_html_is" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_it"   type="ngram_html_it" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_lt"   type="ngram_html_lt" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_lv"   type="ngram_html_lv" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_mt"   type="ngram_html_mt" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_nl"   type="ngram_html_nl" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_no"   type="ngram_html_no" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_pt"   type="ngram_html_pt" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_pl"   type="ngram_html_pl" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_ro"   type="ngram_html_ro" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_sk"   type="ngram_html_sk" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_sl"   type="ngram_html_sl" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_sv"   type="ngram_html_sv" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_hu"   type="ngram_html_hu" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_hr"   type="ngram_html_hr" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_fr"   type="ngram_html_fr" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_fi"   type="ngram_html_fi" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_et"   type="ngram_html_et" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_es"   type="ngram_html_es" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_el"   type="ngram_html_el" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_de"   type="ngram_html_de" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_da"   type="ngram_html_da" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_cs"   type="ngram_html_cs" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_bg"   type="ngram_html_bg" stored="true" indexed="true" multiValued="true"/>
+    <field name="ngram_search_labels_ga"   type="ngram_html_ga" stored="true" indexed="true" multiValued="true"/>
+
+
+    <!-- Copy content of input fields to search fields. -->
+
+    <!-- preferredLabel -> search_title -->
+    <!-- labels -> search_labels -->
+    <!-- labels -> ngram_search_labels -->
+
+    <copyField source="preferredLabel_en" dest="search_title_en"/>
+    <copyField source="preferredLabel_is" dest="search_title_is"/>
+    <copyField source="preferredLabel_it" dest="search_title_it"/>
+    <copyField source="preferredLabel_lt" dest="search_title_lt"/>
+    <copyField source="preferredLabel_lv" dest="search_title_lv"/>
+    <copyField source="preferredLabel_mt" dest="search_title_mt"/>
+    <copyField source="preferredLabel_nl" dest="search_title_nl"/>
+    <copyField source="preferredLabel_no" dest="search_title_no"/>
+    <copyField source="preferredLabel_pt" dest="search_title_pt"/>
+    <copyField source="preferredLabel_pl" dest="search_title_pl"/>
+    <copyField source="preferredLabel_ro" dest="search_title_ro"/>
+    <copyField source="preferredLabel_sk" dest="search_title_sk"/>
+    <copyField source="preferredLabel_sl" dest="search_title_sl"/>
+    <copyField source="preferredLabel_sv" dest="search_title_sv"/>
+    <copyField source="preferredLabel_hu" dest="search_title_hu"/>
+    <copyField source="preferredLabel_hr" dest="search_title_hr"/>
+    <copyField source="preferredLabel_fr" dest="search_title_fr"/>
+    <copyField source="preferredLabel_fi" dest="search_title_fi"/>
+    <copyField source="preferredLabel_et" dest="search_title_et"/>
+    <copyField source="preferredLabel_es" dest="search_title_es"/>
+    <copyField source="preferredLabel_el" dest="search_title_el"/>
+    <copyField source="preferredLabel_de" dest="search_title_de"/>
+    <copyField source="preferredLabel_da" dest="search_title_da"/>
+    <copyField source="preferredLabel_cs" dest="search_title_cs"/>
+    <copyField source="preferredLabel_bg" dest="search_title_bg"/>
+    <copyField source="preferredLabel_ga" dest="search_title_ga"/>
+
+    <copyField source="labels_en" dest="search_labels_en"/>
+    <copyField source="labels_is" dest="search_labels_is"/>
+    <copyField source="labels_it" dest="search_labels_it"/>
+    <copyField source="labels_lt" dest="search_labels_lt"/>
+    <copyField source="labels_lv" dest="search_labels_lv"/>
+    <copyField source="labels_mt" dest="search_labels_mt"/>
+    <copyField source="labels_nl" dest="search_labels_nl"/>
+    <copyField source="labels_no" dest="search_labels_no"/>
+    <copyField source="labels_pt" dest="search_labels_pt"/>
+    <copyField source="labels_pl" dest="search_labels_pl"/>
+    <copyField source="labels_ro" dest="search_labels_ro"/>
+    <copyField source="labels_sk" dest="search_labels_sk"/>
+    <copyField source="labels_sl" dest="search_labels_sl"/>
+    <copyField source="labels_sv" dest="search_labels_sv"/>
+    <copyField source="labels_hu" dest="search_labels_hu"/>
+    <copyField source="labels_hr" dest="search_labels_hr"/>
+    <copyField source="labels_fr" dest="search_labels_fr"/>
+    <copyField source="labels_fi" dest="search_labels_fi"/>
+    <copyField source="labels_et" dest="search_labels_et"/>
+    <copyField source="labels_es" dest="search_labels_es"/>
+    <copyField source="labels_el" dest="search_labels_el"/>
+    <copyField source="labels_de" dest="search_labels_de"/>
+    <copyField source="labels_da" dest="search_labels_da"/>
+    <copyField source="labels_cs" dest="search_labels_cs"/>
+    <copyField source="labels_bg" dest="search_labels_bg"/>
+    <copyField source="labels_ga" dest="search_labels_ga"/>
+
+    <copyField source="labels_en" dest="ngram_search_labels_en"/>
+    <copyField source="labels_is" dest="ngram_search_labels_is"/>
+    <copyField source="labels_it" dest="ngram_search_labels_it"/>
+    <copyField source="labels_lt" dest="ngram_search_labels_lt"/>
+    <copyField source="labels_lv" dest="ngram_search_labels_lv"/>
+    <copyField source="labels_mt" dest="ngram_search_labels_mt"/>
+    <copyField source="labels_nl" dest="ngram_search_labels_nl"/>
+    <copyField source="labels_no" dest="ngram_search_labels_no"/>
+    <copyField source="labels_pt" dest="ngram_search_labels_pt"/>
+    <copyField source="labels_pl" dest="ngram_search_labels_pl"/>
+    <copyField source="labels_ro" dest="ngram_search_labels_ro"/>
+    <copyField source="labels_sk" dest="ngram_search_labels_sk"/>
+    <copyField source="labels_sl" dest="ngram_search_labels_sl"/>
+    <copyField source="labels_sv" dest="ngram_search_labels_sv"/>
+    <copyField source="labels_hu" dest="ngram_search_labels_hu"/>
+    <copyField source="labels_hr" dest="ngram_search_labels_hr"/>
+    <copyField source="labels_fr" dest="ngram_search_labels_fr"/>
+    <copyField source="labels_fi" dest="ngram_search_labels_fi"/>
+    <copyField source="labels_et" dest="ngram_search_labels_et"/>
+    <copyField source="labels_es" dest="ngram_search_labels_es"/>
+    <copyField source="labels_el" dest="ngram_search_labels_el"/>
+    <copyField source="labels_de" dest="ngram_search_labels_de"/>
+    <copyField source="labels_da" dest="ngram_search_labels_da"/>
+    <copyField source="labels_cs" dest="ngram_search_labels_cs"/>
+    <copyField source="labels_bg" dest="ngram_search_labels_bg"/>
+    <copyField source="labels_ga" dest="ngram_search_labels_ga"/>
+
+    <!-- Make Solr admin more usuable -->
+    <dynamicField name="*"      type="ignored" multiValued="true"/>
+    <field name="_version_"     type="long" indexed="true" stored="true"/>
+  </fields>
+
+  <uniqueKey>uri</uniqueKey>
+
+  <types>
+
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="date" class="solr.TrieDateField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="boolean" class="solr.BoolField"/>
+    <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField"/>
+
+    <fieldType name="text_html_en" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_bg" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_bg.txt"/>
+        <filter class="solr.BulgarianStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_bg.txt"/>
+        <filter class="solr.BulgarianStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_ga" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_cs" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_cz.txt"/>
+        <filter class="solr.CzechStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_cz.txt"/>
+        <filter class="solr.CzechStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_da" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_da.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Danish"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_da.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Danish"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_de" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_de.txt" format="snowball"/>
+        <filter class="solr.GermanNormalizationFilterFactory"/>
+        <filter class="solr.GermanLightStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_de.txt" format="snowball"/>
+        <filter class="solr.GermanNormalizationFilterFactory"/>
+        <filter class="solr.GermanLightStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_el" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.GreekLowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="false" words="lang/stopwords_el.txt"/>
+        <filter class="solr.GreekStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.GreekLowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="false" words="lang/stopwords_el.txt"/>
+        <filter class="solr.GreekStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_es" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_es.txt" format="snowball"/>
+        <filter class="solr.SpanishLightStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_es.txt" format="snowball"/>
+        <filter class="solr.SpanishLightStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_et" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_fi" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fi.txt" format="snowball"/>
+        <filter class="solr.FinnishLightStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fi.txt" format="snowball"/>
+        <filter class="solr.FinnishLightStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_fr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_fr.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fr.txt" format="snowball"/>
+        <filter class="solr.FrenchLightStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_fr.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fr.txt" format="snowball"/>
+        <filter class="solr.FrenchLightStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_hr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_hu" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_hu.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Hungarian"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_hu.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Hungarian"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_sv" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_sv.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Swedish"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_sv.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Swedish"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_sl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- We don't have stopwords for sk -->
+    <fieldType name="text_html_sk" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_ro" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ro.txt"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Romanian"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ro.txt"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Romanian"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_pl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.StempelPolishStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.StempelPolishStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_pt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pt.txt" format="snowball"/>
+        <filter class="solr.PortugueseLightStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pt.txt" format="snowball"/>
+        <filter class="solr.PortugueseLightStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_no" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_no.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Norwegian"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_no.txt" format="snowball"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Norwegian"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_nl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_nl.txt" format="snowball"/>
+        <filter class="solr.StemmerOverrideFilterFactory" dictionary="lang/stemdict_nl.txt" ignoreCase="false"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Kp"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_nl.txt" format="snowball"/>
+        <filter class="solr.StemmerOverrideFilterFactory" dictionary="lang/stemdict_nl.txt" ignoreCase="false"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Kp"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_mt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_lv" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_lv.txt"/>
+        <filter class="solr.LatvianStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_lv.txt"/>
+        <filter class="solr.LatvianStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_lt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_it" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_it.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_it.txt" format="snowball"/>
+        <filter class="solr.ItalianLightStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_it.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_it.txt" format="snowball"/>
+        <filter class="solr.ItalianLightStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_html_is" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+    For partial matches, words are split up in ngrams.
+    Only languages with compound words get a full ngram treatment.
+    For other languages only ngrams starting from the beginning of the word are indexed.
+    -->
+
+
+
+
+    <fieldType name="ngram_html_en" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_bg" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_bg.txt"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_ga" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_cs" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_cz.txt"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_da" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_da.txt" format="snowball"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_de" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_de.txt" format="snowball"/>
+        <filter class="solr.GermanNormalizationFilterFactory"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.GermanNormalizationFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_el" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.GreekLowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="false" words="lang/stopwords_el.txt"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.GreekLowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_es" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_es.txt" format="snowball"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_et" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_fi" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fi.txt" format="snowball"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_fr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_fr.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fr.txt" format="snowball"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_fr.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_hr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_hu" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_hu.txt" format="snowball"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_sv" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_sv.txt" format="snowball"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_sl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- We don't have stopwords for sk -->
+    <fieldType name="ngram_html_sk" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_ro" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ro.txt"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_pl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_pt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pt.txt" format="snowball"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_no" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_no.txt" format="snowball"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_nl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_nl.txt" format="snowball"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_mt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_lv" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_lv.txt"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_lt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_it" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_it.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_it.txt" format="snowball"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_it.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_html_is" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="15"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+  </types>
+</schema>
