@@ -36,14 +36,6 @@
 
   <dependencies>
 
-    <!-- ESCO variable setter -->
-
-    <dependency>
-      <groupId>eu.esco-xl</groupId>
-      <artifactId>esco-solr-home-setter</artifactId>
-      <version>1.0.1</version>
-    </dependency>
-
     <!-- SLF4J -->
     <dependency>
       <groupId>org.slf4j</groupId>
